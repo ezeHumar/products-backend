@@ -9,3 +9,17 @@ exports.addProduct = async (name, description, price, imageURL) => {
         imageURL: imageURL
     });
 }
+
+//Function for retrieving all products from the database
+exports.retrieveAllProducts = async () => {
+    return Product.findAll();
+}
+
+//Function for retrieving a single product by id
+exports.retrieveSingleProduct = async (id) => {
+    return Product.findOne({
+        where: {
+            id: id
+        }
+    });
+}
