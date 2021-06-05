@@ -36,3 +36,12 @@ exports.updateProduct = async (id, name, description, price, imageURL) => {
         { where: { id: id } }
     )
 }
+
+//Function for deleting a touple, passing the id
+exports.removeProduct = async (id) => {
+    return Product.destroy({
+        where: {
+            id: id
+        }
+    });
+}

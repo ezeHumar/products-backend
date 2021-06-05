@@ -87,12 +87,34 @@ exports.updateProduct = (req, res) => {
                 //If no touple is updated an error message is sent
                 res.json("There was an error");
             }
-            
         }).catch(() => {
             res.json("There was an error");
         });
     } else {
         //If one or more of the id, name, description and price parameters are not populated nothing gets updated in the database and an error message gets returned
         res.json("The 'id', 'name', 'description' and 'price' parameters should be populated");
+    }
+}
+
+exports.removeProduct = async (req, res) => {
+    //If the parameters are defined the product get removed
+    if((req.params !== undefined)){
+        productService.removeProduct(req.params.id)
+        .then((data) => {
+            //If data is 1 it means that a touple has been deleted, if it's 0 it means that no tuple has been deleted
+            if(data === 1){
+                //If the touple has been removed a succesfull message is sent
+                res.json("The item has been deleted correctly");
+            }else{
+                //If no touple has been removed an error message is sent
+                res.json("There was an error");
+            }            
+        }).catch(() => {
+            //If the promise gives an error, an error message gets returned
+            res.json("There was an error");
+        });
+    }else{
+        //If the parameters are undefined, an error message gets returned
+        res.json("There was an error");
     }
 }

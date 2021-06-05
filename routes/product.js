@@ -37,4 +37,7 @@ router.get("/", productController.retrieveAllProducts);
 //PUT route for the product
 router.put("/", upload.single("productImage"), productController.updateProduct);
 
+//DELETE route for the product
+router.delete("/:id", productController.removeProduct);
+
 module.exports = router;
