@@ -23,3 +23,16 @@ exports.retrieveSingleProduct = async (id) => {
         }
     });
 }
+
+//Function for updating a product, passing the id
+exports.updateProduct = async (id, name, description, price, imageURL) => {
+    return Product.update(
+        {
+            name: name,
+            description: description,
+            price: price,
+            imageURL: imageURL
+        },
+        { where: { id: id } }
+    )
+}
