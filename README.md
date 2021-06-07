@@ -110,7 +110,7 @@ DELETE /products/:id
 
 **GET**
 
-For retrieving a single product by name
+For retrieving a single image by name
 
 ```http
 GET /images/:name
