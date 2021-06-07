@@ -3,6 +3,7 @@ const express = require('express');
 const router = express.Router();
 const multer = require('multer');
 
+//It gets defined where the images will be stored and the name of the file uploaded
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, './images/');
@@ -12,6 +13,7 @@ const storage = multer.diskStorage({
     }
 })
 
+//Custom filter for multer. Only png or jpeg files gets accepted
 const fileFilter = (req, file, cb) => {
     if (file.mimetype === "image/jpeg" || file.mimetype === "image/png") {
         cb(null, true);
@@ -20,6 +22,7 @@ const fileFilter = (req, file, cb) => {
     }
 }
 
+//Multen gets instanciated
 const upload = multer({ 
     storage: storage,
     fileFilter: fileFilter

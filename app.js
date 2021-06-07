@@ -4,12 +4,6 @@ const cors = require('cors');
 app = express();
 
 // //CORS settings
-// const corsOptions = {
-//     origin: "http://localhost:3000/"
-//   };
-
-// app.use(cors(corsOptions));
-
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method');
@@ -22,6 +16,7 @@ app.use((req, res, next) => {
 app.use(express.json());
 //Support for url-encoded body
 app.use(express.urlencoded({ extended: true }));
+//The /images path gets defined as a static source
 app.use('/images', express.static('images'));
 
 //routerProducts handles the request for the /products route

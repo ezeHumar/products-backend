@@ -1,6 +1,6 @@
 # Products Backend
 
-_This project is an api that allows you to add products to a database_
+This project is an api that allows you to add products to a database
 
 ## Get the api running
 
@@ -10,14 +10,16 @@ Install all the dependencies
 npm install
 ```
 
-Get the server running. With this command the server will bi running on localhost:3000/
+Get the server running. With this command the server will by running on localhost:3000/
 
 ```
 npm run dev
 ```
 ___
 
-## API endpoints
+## **API endpoints**
+
+## Products
 
 **GET**
 
@@ -34,8 +36,6 @@ GET /products/:id
 ```
 
 **POST**
-
-It should be form-data.
 
 For adding a product:
 
@@ -62,12 +62,10 @@ price=[float]
 Optional:
 
 `
-productImage=[file]    
-` - The product's image
+imageURL=[string]    
+` - The product's image's URL
 
 **PUT**
-
-It should be form-data.
 
 For updating a product:
 
@@ -95,11 +93,6 @@ description=[string]
 price=[float]
 ` - The product's price
 
-Optional:
-
-`
-productImage=[file]    
-` - The product's image
 
 **DELETE**
 
@@ -108,3 +101,64 @@ For deleting a product by id
 ```http
 DELETE /products/:id
 ```
+
+## Images
+
+**GET**
+
+For retrieving a single product by name
+
+```http
+GET /images/:name
+```
+
+**POST**
+
+It should be form-data.
+
+For adding an image:
+
+```http
+POST /products/image
+```
+
+The body should should have the following parameters:
+
+Required:
+
+`
+productImage=[file]    
+` - The product's image
+
+**PUT**
+
+It should be form-data.
+
+For updating a product's image:
+
+```http
+PUT /products/image
+```
+
+The body should have the following parameters:
+
+Required:
+
+`
+id=[integer]
+` - The product's id
+
+`
+productImage=[file]    
+` - The product's image
+
+
+**DELETE**
+
+For deleting a product image by id
+
+```http
+DELETE /products/:id/image
+```
+
+The id parameter is the product's id
