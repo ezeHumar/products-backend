@@ -40,4 +40,16 @@ router.put("/", upload.single("productImage"), productController.updateProduct);
 //DELETE route for the product
 router.delete("/:id", productController.removeProduct);
 
+
+//The following rutes are dedicated to the product's images
+
+//POST route for the image
+router.post("/image", upload.single("productImage"), productController.addImage);
+
+//PUT route for the image
+router.put("/image", upload.single("productImage"), productController.updateImage);
+
+//DELETE route for the image
+router.delete("/:id/image", productController.deleteImage);
+
 module.exports = router;
