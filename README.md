@@ -2,6 +2,10 @@
 
 This project is an api that allows you to add products to a database
 
+## Import the database
+
+Import the database products-database.sql in a database called 'products'
+
 ## Get the api running
 
 Install all the dependencies

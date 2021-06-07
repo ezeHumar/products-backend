@@ -38,11 +38,25 @@ exports.updateProduct = async (id, name, description, price) => {
 }
 
 //Function for deleting a touple, passing the id
+//It also deletes the image from the filesystem
 exports.removeProduct = async (id) => {
-  return Product.destroy({
+  //Retrives the image url of the image that is going to be deleted
+  Product.findOne({
     where: {
       id: id
     }
+  })
+  .then((data) => {
+    //If the image is not the default image, it gets deleted
+    if (data.dataValues.imageURL !== "images/default.png") {
+      //The product gets deleted
+      fs.unlinkSync(data.dataValues.imageURL);
+    }
+    return Product.destroy({
+      where: {
+        id: id
+      }
+    });
   });
 }
 
@@ -73,7 +87,7 @@ exports.updateImage = async (id, imageURL) => {
 //Function for deleting the image path of a product.
 //A default image is provided to the product
 exports.deleteImage = async (id) => {
-  //Retrives the image url of the image that is coing to be deleted
+  //Retrives the image url of the image that is going to be deleted
   Product.findOne({
     where: {
       id: id
